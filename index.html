@@ -11,15 +11,18 @@
 
     <script >
     	
-    let promise= fetch('coffee.jpg');
-    //let promise2= promise.then(function (response){ return response.blob;})
-    let promise2= promise.then(response =>{ return response.blob;});
-    let promise3= promise2.then( myBlob=>{
-    	let objectURL= URL.createObjectURL(myBlob);
-    	let img= document.createElement('img');
-    	img.src=objectURL;
-    	document.body.appendChild(img);
-    });
+    
+
+    //let errorCase= promise3.catch(e=>{ console.log("There has been an error in fetch operation: "+e.message);});
+
+    fetch('coffee.jpg').then(response=>  (response.blob))
+    .then(myBlob=>{
+      objectURL=URL.createObjectURL(myBlob);
+      img= document.createElement('img');
+      img.src=objectURL;
+        document.body.appendChild(img);
+    })
+    .catch( e=> { console.log("There has been an error in fetch operation: "+e.message); });
 
    
 
