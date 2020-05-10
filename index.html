@@ -18,7 +18,10 @@
           return response.blob();
         else if(type=='text')
           return response.text();
-      }).catch(e=> {console.log("there is an error: "+e.message);});
+      }).catch(e=> {console.log("there is an error: "+e.message);})
+      .finally(() => {
+    console.log(`fetch attempt for "${url}" finished.`);
+  });
       
     }
 
