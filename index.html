@@ -5,13 +5,27 @@
     <title>Simple fetch()</title>
   </head>
   <body>
-
-    <p>This is my page</p>
+      <p>This is my page</p>
 
 
 
     <script >
     	
+ async function myFetch(){
+  let response= await fetch('coffee.jpg');
+  let myBlob= await response.blob();
+  return myBlob;
+
+
+ }
+
+ myFetch().then((myBlob)=>{
+  let objectURL= URL.createObjectURL(myBlob);
+  let image= document.createElement('img');
+  image.src=objectURL;
+  document.body.appendChild(image);
+
+ }).catch(e=>{console.log('there is an error: '+e.message);});
  
 
     
