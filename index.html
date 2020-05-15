@@ -75,15 +75,12 @@
         verse=verse.toLowerCase();
         let url= verse+'.txt';
 
-        let request= new XMLHttpRequest();
-        request.open('GET',url);
-        request.responseType= 'text';
-
-        request.onload= function(){
-          poemDisplay.textContent= request.response;
-        };
-
-        request.send();
+        
+        fetch(url)
+        .then(reponse=> response.text())
+        .then(text=>{
+          poemDisplay.textContent= text;
+        });
 
       };
 
